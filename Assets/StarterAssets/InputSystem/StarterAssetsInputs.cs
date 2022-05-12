@@ -1,6 +1,7 @@
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
 #endif
 
 namespace StarterAssets
@@ -10,7 +11,7 @@ namespace StarterAssets
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
-		public bool jump;
+		public bool jump = false;
 		public bool sprint;
 
 		[Header("Movement Settings")]
@@ -20,28 +21,42 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
+		private PlayerInput playerInput;
+
+        private void Awake()
+        {
+            playerInput = GetComponent<PlayerInput>();
+			playerInput.actions["Jump"].started += OnJump;
+			playerInput.actions["Move"].performed += OnMove;
+			playerInput.actions["Move"].canceled += OnMove;
+			playerInput.actions["Look"].performed += OnLook;
+			playerInput.actions["Look"].canceled += OnLook;
+			playerInput.actions["Sprint"].performed += OnSprint;
+			playerInput.actions["Sprint"].canceled += OnSprint;
+        }
+
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-		public void OnMove(InputValue value)
+        public void OnMove(CallbackContext value)
 		{
-			MoveInput(value.Get<Vector2>());
+			MoveInput(value.ReadValue<Vector2>());
 		}
 
-		public void OnLook(InputValue value)
+		public void OnLook(CallbackContext value)
 		{
 			if(cursorInputForLook)
 			{
-				LookInput(value.Get<Vector2>());
+				LookInput(value.ReadValue<Vector2>());
 			}
 		}
 
-		public void OnJump(InputValue value)
+		public void OnJump(CallbackContext value)
 		{
-			JumpInput(value.isPressed);
+			JumpInput(true);
 		}
 
-		public void OnSprint(InputValue value)
+		public void OnSprint(CallbackContext value)
 		{
-			SprintInput(value.isPressed);
+			SprintInput(value.ReadValueAsButton());
 		}
 #endif
 
