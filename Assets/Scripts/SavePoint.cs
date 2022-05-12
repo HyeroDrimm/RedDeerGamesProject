@@ -11,7 +11,7 @@ public class SavePoint : MonoBehaviour
     {
         if (isStartSpawn)
         {
-            FindObjectOfType<PlayerController>().LastCheckpoint = this;
+            FindObjectOfType<PlayerController>().lastCheckpoint = this;
         }
     }
 
@@ -19,7 +19,7 @@ public class SavePoint : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerController>().LastCheckpoint = this;
+            other.GetComponent<PlayerController>().lastCheckpoint = this;
         }
     }
 }

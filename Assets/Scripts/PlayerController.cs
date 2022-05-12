@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private SavePoint lastCheckpoint;
+    public SavePoint lastCheckpoint;
     private CharacterController characterController;
 
-    public SavePoint LastCheckpoint { get => lastCheckpoint; set => lastCheckpoint = value; }
 
     private void Awake()
     {
@@ -16,13 +15,18 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            if (lastCheckpoint != null)
-            {
-                characterController.enabled = false;
-                transform.position = lastCheckpoint.SpawnPosition.position;
-                transform.rotation = lastCheckpoint.SpawnPosition.rotation;
-                characterController.enabled = true;
-            }
+            ReturnToLastCheckpoint();
+        }
+    }
+
+    public void ReturnToLastCheckpoint()
+    {
+        if (lastCheckpoint != null)
+        {
+            characterController.enabled = false;
+            transform.position = lastCheckpoint.SpawnPosition.position;
+            transform.rotation = lastCheckpoint.SpawnPosition.rotation;
+            characterController.enabled = true;
         }
     }
 }
