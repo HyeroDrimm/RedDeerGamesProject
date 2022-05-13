@@ -1,3 +1,5 @@
+// By Wojciech "HyeroDrimm" Wroñski
+
 using System.Collections.Generic;
 using UnityEngine;
 

@@ -1,3 +1,5 @@
+// By Wojciech "HyeroDrimm" Wroñski
+
 using StarterAssets;
 using UnityEngine;
 

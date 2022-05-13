@@ -1,3 +1,5 @@
+// By Wojciech "HyeroDrimm" Wroñski
+
 using System;
 using System.Collections;
 using System.Collections.Generic;

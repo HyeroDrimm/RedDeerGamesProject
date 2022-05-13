@@ -1,3 +1,5 @@
+// By Wojciech "HyeroDrimm" Wroñski
+
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
