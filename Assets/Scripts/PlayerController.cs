@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
-    public SavePoint lastCheckpoint;
+    [HideInInspector] public SavePoint lastCheckpoint;
     private CharacterController characterController;
 
 
@@ -28,5 +28,10 @@ public class PlayerController : MonoBehaviour
             transform.rotation = lastCheckpoint.SpawnPosition.rotation;
             characterController.enabled = true;
         }
+    }
+
+    public void DealDamage()
+    {
+        ReturnToLastCheckpoint();
     }
 }

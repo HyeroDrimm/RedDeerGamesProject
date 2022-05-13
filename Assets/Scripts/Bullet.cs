@@ -4,7 +4,8 @@ public class Bullet : MonoBehaviour
 {
     public float shootingStrength = 5f;
     public float lifeTime = 5f;
-    public Vector3 shootingDirection;
+    public LayerMask affectedLayers;
+    [HideInInspector] public Vector3 shootingDirection;
 
     private Rigidbody rb;
 
@@ -18,15 +19,9 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Player"))
+        if ((affectedLayers.value & (1 << collision.gameObject.layer)) != 0 && collision.gameObject.TryGetComponent(out IDamageable damageable))
         {
-            var player = collision.transform.GetComponent<PlayerController>();
-            player.ReturnToLastCheckpoint();
-            Destroy(gameObject);
-        }
-        if (collision.transform.CompareTag("Destroyable"))
-        {
-            Destroy(collision.gameObject);
+            damageable.DealDamage();
             Destroy(gameObject);
         }
     }

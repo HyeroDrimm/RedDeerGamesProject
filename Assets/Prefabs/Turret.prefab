@@ -206,8 +206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2854346351162463174, guid: f76bc08c39c945b449ad1057aa5e9629, type: 3}
-  secBetweenShoot: 5
-  shootingStrength: 50
+  secBetweenShoot: 3
+  shootingStrength: 10000
   shootingPoint: {fileID: 3489712507186547175}
 --- !u!1 &6908317884339573648
 GameObject:

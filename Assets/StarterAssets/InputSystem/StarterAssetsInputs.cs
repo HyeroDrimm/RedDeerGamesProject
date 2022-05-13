@@ -13,6 +13,7 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump = false;
 		public bool sprint;
+		public bool attack;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -33,6 +34,8 @@ namespace StarterAssets
 			playerInput.actions["Look"].canceled += OnLook;
 			playerInput.actions["Sprint"].performed += OnSprint;
 			playerInput.actions["Sprint"].canceled += OnSprint;
+			playerInput.actions["Shoot"].performed += OnAttack;
+			playerInput.actions["Shoot"].canceled += OnAttack;
         }
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -58,6 +61,10 @@ namespace StarterAssets
 		{
 			SprintInput(value.ReadValueAsButton());
 		}
+		public void OnAttack(CallbackContext value)
+		{
+			AttackInput(value.ReadValueAsButton());
+		}
 #endif
 
 
@@ -79,6 +86,11 @@ namespace StarterAssets
 		public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
+		}
+
+		public void AttackInput(bool newAttackState)
+		{
+			attack = newAttackState;
 		}
 
 		private void OnApplicationFocus(bool hasFocus)
