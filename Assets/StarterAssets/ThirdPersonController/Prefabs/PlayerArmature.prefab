@@ -1486,6 +1486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b462c6e3db725554e9a99fa37fb19f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainChannel: {fileID: 11400000, guid: b29699bddaaf31f44829f4e174c0efd8, type: 2}
   bulletPrefab: {fileID: 2854346351162463174, guid: bd46443ab66a3d74ba33b8f371f6f026, type: 3}
   secBetweenShoot: 0.75
   shootingStrength: 10000

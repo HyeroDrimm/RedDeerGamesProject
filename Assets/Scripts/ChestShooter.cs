@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ChestShooter : MonoBehaviour
 {
+    [SerializeField] private MainChannel mainChannel;
     [SerializeField] private Bullet bulletPrefab;
     [SerializeField] private float secBetweenShoot = 5f;
     [SerializeField] private float shootingStrength = 5f;
@@ -21,6 +22,7 @@ public class ChestShooter : MonoBehaviour
         counter += Time.deltaTime;
         if (input.attack && counter >= secBetweenShoot)
         {
+            mainChannel.RaiseShootNumberIncrement();
             ShootBullet();
             counter = 0;
         }
