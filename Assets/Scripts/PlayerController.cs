@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour, IDamageable
             characterController.enabled = false;
             transform.position = lastCheckpoint.SpawnPosition.position;
             transform.rotation = lastCheckpoint.SpawnPosition.rotation;
-            thirdPersonController.Speed = 0;
             characterController.enabled = true;
         }
     }
@@ -41,13 +40,5 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void DealDamage()
     {
         ReturnToLastCheckpoint();
-    }
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.gameObject.CompareTag("Killing"))
-        {
-            ReturnToLastCheckpoint();
-        }
     }
 }

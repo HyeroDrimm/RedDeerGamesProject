@@ -1316,7 +1316,7 @@ MonoBehaviour:
   JumpTimeout: 0.3
   FallTimeout: 0.15
   Grounded: 1
-  GroundedOffset: -0.29
+  GroundedOffset: -0.2
   GroundedRadius: 0.28
   GroundLayers:
     serializedVersion: 2
