@@ -2,9 +2,9 @@
 
 using UnityEngine;
 
-public class DestroyableObject : MonoBehaviour, IDamageable
+public class DestroyableObject : MonoBehaviour, IBulletActivated
 {
-    public void DealDamage()
+    public void BulletActivate()
     {
         Destroy(gameObject);
     }

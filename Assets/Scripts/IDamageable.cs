@@ -1,6 +1,6 @@
 // By Wojciech "HyeroDrimm" Wroński
 
-public interface IDamageable
+public interface IBulletActivated
 {
-    public void DealDamage();
+    public void BulletActivate();
 }

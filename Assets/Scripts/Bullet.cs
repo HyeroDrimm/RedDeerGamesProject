@@ -21,9 +21,9 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if ((affectedLayers.value & (1 << collision.gameObject.layer)) != 0 && collision.gameObject.TryGetComponent(out IDamageable damageable))
+        if ((affectedLayers.value & (1 << collision.gameObject.layer)) != 0 && collision.gameObject.TryGetComponent(out IBulletActivated bullletActivated))
         {
-            damageable.DealDamage();
+            bullletActivated.BulletActivate();
             Destroy(gameObject);
         }
     }

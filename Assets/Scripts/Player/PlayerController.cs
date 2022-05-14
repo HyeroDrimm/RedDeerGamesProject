@@ -5,7 +5,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(ThirdPersonController))]
-public class PlayerController : MonoBehaviour, IDamageable
+public class PlayerController : MonoBehaviour, IBulletActivated
 {
     [HideInInspector] public SavePoint lastCheckpoint;
     private CharacterController characterController;
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
     }
 
-    public void DealDamage()
+    public void BulletActivate()
     {
         ReturnToLastCheckpoint();
     }
