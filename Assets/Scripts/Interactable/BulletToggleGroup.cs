@@ -16,7 +16,7 @@ public class BulletToggleGroup : MonoBehaviour
 
             child.secretOnButtonTurnOn += OnToggle;
 
-            if (currentActive == null)
+            if (child.currentState)
                 currentActive = child;
         }
     }
